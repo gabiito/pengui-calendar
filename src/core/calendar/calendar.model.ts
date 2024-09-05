@@ -1,5 +1,5 @@
 import { Options } from "../options/options.model";
-import { ViewMode } from "../options/enums/viewMode";
+import { ViewMode } from "../../enums/viewMode";
 
 export class Calendar {
     private selector: String;
