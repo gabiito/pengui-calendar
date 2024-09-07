@@ -1,4 +1,4 @@
-import { EventObject } from "../../types/event";
+import { EventObject } from "../../types/events";
 
 export class Event {
   id?: string;
