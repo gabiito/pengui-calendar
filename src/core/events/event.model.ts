@@ -1,6 +1,6 @@
 import { EventObject } from '../../types/events';
 
-export class Event {
+export class CalendarEvent {
     id?: string;
     calendarId?: string;
     title: string;
