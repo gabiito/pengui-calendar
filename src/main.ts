@@ -1,3 +1,3 @@
-import { Calendar } from "./core/calendar/calendar.model";
+import { Calendar } from './core/calendar/calendar.model';
 
 export default Calendar;

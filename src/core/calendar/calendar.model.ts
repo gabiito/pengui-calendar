@@ -1,20 +1,17 @@
-import { Options, ViewMode } from "../../types/options";
-import { Event } from "../events/event.model";
+import { Options, ViewMode } from '../../types/options';
+import { Event } from '../events/event.model';
 
 export class Calendar {
     private element: Element;
     private options: Options;
     private events: Event[] = [];
 
-    constructor(
-        selector: string,
-        options: Options = {},
-    ) {
+    constructor(selector: string, options: Options = {}) {
         this.element = this.getElementFromSelector(selector);
         this.validateOptions(options);
         this.options = options;
     }
-    
+
     private getElementFromSelector(selector: string): Element {
         const element = document.querySelector(selector);
         if (element === null) {
@@ -32,7 +29,9 @@ export class Calendar {
 
         if ('firstDayOfWeek' in options) {
             if (![1, 2, 3, 4, 5, 6, 7].includes(options.firstDayOfWeek ?? 0)) {
-                throw new Error(`"${options.firstDayOfWeek}" is not a valid value for option "firstDayOfWeek"`);
+                throw new Error(
+                    `"${options.firstDayOfWeek}" is not a valid value for option "firstDayOfWeek"`,
+                );
             }
         }
 
@@ -40,7 +39,7 @@ export class Calendar {
             if (
                 !Array.isArray(options.dayNames) ||
                 options.dayNames.length !== 7 ||
-                !options.dayNames.every(element => typeof element === 'string')
+                !options.dayNames.every((element) => typeof element === 'string')
             ) {
                 throw new Error(`${options.dayNames}" is not a valid value for option "dayNames"`);
             }
@@ -50,9 +49,11 @@ export class Calendar {
             if (
                 !Array.isArray(options.monthNames) ||
                 options.monthNames.length !== 12 ||
-                !options.monthNames.every(element => typeof element === 'string')
+                !options.monthNames.every((element) => typeof element === 'string')
             ) {
-                throw new Error(`${options.monthNames}" is not a valid value for option "monthNames"`);
+                throw new Error(
+                    `${options.monthNames}" is not a valid value for option "monthNames"`,
+                );
             }
         }
     }
@@ -75,7 +76,6 @@ export class Calendar {
     }
 
     render() {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
-
 }

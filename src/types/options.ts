@@ -6,5 +6,18 @@ export type Options = {
     viewMode?: ViewMode;
     firstDayOfWeek?: WeekDayNumber;
     dayNames?: [string, string, string, string, string, string, string];
-    monthNames?: [string, string, string, string, string, string, string, string, string, string, string, string];
-}
+    monthNames?: [
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+    ];
+};
