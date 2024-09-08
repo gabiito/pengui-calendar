@@ -1,10 +1,11 @@
+import { EventsMap } from '../../types/events';
 import { Options, ViewMode } from '../../types/options';
-import { Event } from '../events/event.model';
+import { CalendarEvent } from '../events/event.model';
 
 export class Calendar {
     private element: Element;
     private options: Options;
-    private events: Event[] = [];
+    private events: EventsMap = new Map();
 
     constructor(selector: string, options: Options = {}) {
         this.element = this.getElementFromSelector(selector);
@@ -13,6 +14,9 @@ export class Calendar {
     }
 
     private getElementFromSelector(selector: string): Element {
+        if (selector === '') {
+            throw new Error("Empty selector provided");
+        }
         const element = document.querySelector(selector);
         if (element === null) {
             throw new Error(`"Element not found for selector: "${selector}"`);
@@ -66,13 +70,47 @@ export class Calendar {
         return this.element;
     }
 
-    addEvents(events: Event[]) {
-        //todo: validate Event structure
-        this.events = events;
+    addEvents(events: CalendarEvent[]) {
+        this.events.set('2021-10-01', [
+            ...(this.events.get('2021-10-01') ?? []), // TODO: maybe a merging function?
+            new CalendarEvent({
+                title: 'Event 1',
+                startDate: new Date('2021-10-01'),
+                endDate: new Date('2021-10-01'),
+                description: 'Description 1',
+                location: 'Location 1',
+                members: [],
+                recurrent: false,
+            }),
+        ]);
+        this.events.set('2021-10-01', [
+            ...(this.events.get('2021-10-01') ?? []), // TODO: maybe a merging function?
+            new CalendarEvent({
+                title: 'Event 1',
+                startDate: new Date('2021-10-01'),
+                endDate: new Date('2021-10-01'),
+                description: 'Description 1',
+                location: 'Location 1',
+                members: [],
+                recurrent: false,
+            }),
+        ]);
+        this.events.set('2021-10-01', [
+            ...(this.events.get('2021-10-01') ?? []), // TODO: maybe a merging function?
+            new CalendarEvent({
+                title: 'Event 1',
+                startDate: new Date('2021-10-01'),
+                endDate: new Date('2021-10-01'),
+                description: 'Description 1',
+                location: 'Location 1',
+                members: [],
+                recurrent: false,
+            }),
+        ]);
     }
 
-    listEvents(): Event[] {
-        return this.events;
+    listEvents(): CalendarEvent[] {
+        return Array.from(this.events.values()).flat();
     }
 
     render() {
