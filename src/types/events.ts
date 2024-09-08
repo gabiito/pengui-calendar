@@ -1,3 +1,5 @@
+import { CalendarEvent } from "../core/events/event.model";
+
 export type EventObject = {
     id?: string;
     calendarId?: string;
@@ -9,3 +11,5 @@ export type EventObject = {
     location: string | null;
     members: string[];
 };
+
+export type EventsMap = Map<string, CalendarEvent[]>;
